@@ -1,0 +1,7 @@
+// babel的配置文件
+{
+    // 预设
+    "presets": [
+        "@babel/preset-env" // 希望使用插件把es6转成es5
+    ]
+}
