@@ -8,6 +8,12 @@
 <body>
     <div id="app"></div>
     <script src="../dist/vue.js"></script>
+    <!-- 
+        vue的编译原理：
+        vue2 中，模板编译可以选择性的添加 
+        runtimeOnly 只在运行时使用（无法解析用户传递的template属性）
+        runtime with compiler（可以实现模板编译的）
+     -->
     <script>
         const vm = new Vue({
             el: '#app',
@@ -23,10 +29,19 @@
                     },
                     arr: [1, 2, 3, { a: 1 }] // 数组元素有对象也会加入观察
                 };
-            }
+            },
+
+            // 如何将模板变成render函数 => 返回的是虚拟节点
+            // 使用template模板，最终也将会转换成render
+            // 1、实现一个解析器，可以解析html模板 => 目的是变成一个ast语法树，可以用一个树结构来描述
+            // ast语法树，描述什么标签，有什么属性...
+            // 2、虚拟节点是描述dom的，是使用对象来描述html的，ast语法树描述js语法的
+            // 虚拟节点创建vue标识
+
+            // 将html本身变成js语法，render函数
+            template: `<div id="app" class="container" style="color: red"><span style="color: red">hello world {{msg}}</span></div>`
         });
         vm._data.arr.push({ b: 2 }); // 数组追加属性时也会加入观察
-        console.dir(vm);
     </script>
 </body>
 </html>

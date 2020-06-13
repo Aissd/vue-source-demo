@@ -25,6 +25,7 @@ methdos.forEach(method => {
         let inserted; // 这个是存储可能要被观测的对象
         // push，unshift，splice 都可以新增属性（新增的属性也有可能是对象）
         // 内部还对数组中引用类型也做了一次劫持
+        // 只对新增元素的方法做劫持处理
         switch (method) {
             case 'push':
             case 'unshift':

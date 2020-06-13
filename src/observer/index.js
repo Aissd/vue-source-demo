@@ -24,7 +24,7 @@ class Observer {
     // 遍历数组，把数组的每个元素都放到observe方法里，判断是否要被观测
     observeArray(data) {
         for (let i = 0; i < data.length; i++) {
-            observe(data[i]);
+            observe(data[i]); // 检测数组的对象类型
         }
     }
     walk(data) {
