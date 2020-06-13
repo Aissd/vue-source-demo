@@ -15,10 +15,16 @@
             // 对对象的所有属性，使用 defineProperty进行重新定义 get 和 set
             data() {
                 return {
-                    msg: 'zf'
+                    msg: 'zf',
+                    age: 11,
+                    state: {
+                        name: '身份',
+                        type: 'idcard'
+                    }
                 };
             }
         });
+        console.dir(vm);
     </script>
 </body>
 </html>
