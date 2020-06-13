@@ -2,8 +2,6 @@ import { initState } from './state.js';
 
 export function initMixin(Vue) {
     Vue.prototype._init = function(options) {
-        console.log(options);
-
         const vm = this; // this就是vue的实例
         vm.$options = options; // 用户传入的参数
 
