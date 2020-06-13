@@ -20,10 +20,12 @@
                     state: {
                         name: '身份',
                         type: 'idcard'
-                    }
+                    },
+                    arr: [1, 2, 3, { a: 1 }] // 数组元素有对象也会加入观察
                 };
             }
         });
+        vm._data.arr.push({ b: 2 }); // 数组追加属性时也会加入观察
         console.dir(vm);
     </script>
 </body>
