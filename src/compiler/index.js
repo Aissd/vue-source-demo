@@ -4,6 +4,8 @@ export function compileToFunctions(template) {
 
     let ast = parseHTML(template);
 
+    console.log(ast);
+
     // 模板编译原理
     // 1、先把我们的代码转化成ast语法树
     //  1.1）parser解析 - 通过正则
