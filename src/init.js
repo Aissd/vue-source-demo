@@ -18,7 +18,7 @@ export function initMixin(Vue) {
     Vue.prototype.$mount = function(el) {
         const vm = this; // this就是vue的实例
         // el 可能是字符串，或dom对象
-        el = document.querySelector(el);
+        el = vm.$el = document.querySelector(el);
 
         // 如果同时传入template 和 render，默认会采用render
         // 若都没传，就使用id="app"中的模板
@@ -34,7 +34,7 @@ export function initMixin(Vue) {
             const render = compileToFunctions(template);
             opts.render = render;
         }
-
+        console.log(opts.render);
         // 走到这里，说明不需要编译了，因为用户传入的就是render函数
         
         // vm有render方法，渲染完之后，赋值到el上

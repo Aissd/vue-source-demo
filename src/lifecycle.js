@@ -1,9 +1,13 @@
 import Watcher from './observer/watcher.js';
+import { patch } from './vdom/patch.js'
 
 export function lifeCyckeMixin(Vue) {
     Vue.prototype._update = function(vnode) {
-        console.log(vnode);
-        console.log(vnode, '_update');
+        const vm = this;
+        // 将虚拟节点，变成真实节点，且替换掉$el
+
+        // 后续 dom diff 也会执行这个方法
+        vm.$el = patch(vm.$el, vnode);
     }
 }
 
