@@ -1,5 +1,6 @@
 import { initState } from './state.js';
 import { compileToFunctions } from './compiler/index.js';
+import { mountComponent } from './lifecycle.js';
 
 export function initMixin(Vue) {
     Vue.prototype._init = function(options) {
@@ -32,12 +33,11 @@ export function initMixin(Vue) {
 
             const render = compileToFunctions(template);
             opts.render = render;
-
-            console.log(opts.render);
         }
 
         // 走到这里，说明不需要编译了，因为用户传入的就是render函数
         
-        opts.render;
+        // vm有render方法，渲染完之后，赋值到el上
+        mountComponent(vm, el); // 组件的初始化挂载流程
     }
 }

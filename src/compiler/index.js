@@ -19,7 +19,7 @@ export function compileToFunctions(template) {
     // 核心就是字符串拼接
     let code = generate(ast); // 代码生成 => 拼接字符串
 
-    code = `with(this._data){return ${code}}`;
+    code = `with(this){return ${code}}`;
 
     let render = new Function(code); // 相当于给字符串变成了函数
 
