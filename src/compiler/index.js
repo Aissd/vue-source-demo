@@ -17,8 +17,16 @@ export function compileToFunctions(template) {
      */
 
     // 核心就是字符串拼接
-    let code = generate(ast);
-    console.log(code);
+    let code = generate(ast); // 代码生成 => 拼接字符串
+
+    code = `with(this._data){return ${code}}`;
+
+    let render = new Function(code); // 相当于给字符串变成了函数
+
+    // 注释节点，自闭和标签，事件绑定，@click，class，slot插槽也是在render这里实现的
+
+    return render;
+
     // 模板编译原理
     // 1、先把我们的代码转化成ast语法树
     //  1.1）parser解析 - 通过正则

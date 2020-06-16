@@ -32,6 +32,8 @@ export function initMixin(Vue) {
 
             const render = compileToFunctions(template);
             opts.render = render;
+
+            console.log(opts.render);
         }
 
         // 走到这里，说明不需要编译了，因为用户传入的就是render函数

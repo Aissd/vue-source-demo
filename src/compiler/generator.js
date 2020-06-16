@@ -64,8 +64,7 @@ function genChildren(el) {
 }
 
 export function generate(el) {
-    let code = `
-        _c("${el.tag}", ${ // 标签
+    let code = `_c("${el.tag}", ${ // 标签
             el.attrs.length ? `${genProps(el.attrs)}` : undefined // 属性
         }${
             el.children ? `,${genChildren(el)}` : '' // 子
